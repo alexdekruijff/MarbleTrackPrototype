@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { 
+            padding-top:50px; 
+            background-image: url("AppandScreen_SISS_DemoDay-05.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top;
+        }
+        #button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            bottom: 2%;
+            width: 100%;
+        }
+        #btnimgstart {
+            width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        var socket = io();
+        function myFunction1() {
+            socket.emit('decide', true);
+            direct();
+        }
+        function direct() {
+            window.location.href = "/LookScreen1";
+        }
+    </script>
+</head>
+<body>
+    <div id="button">
+        <img onclick="myFunction1()" id="btnimgstart" src="AppandScreen_SISS_DemoDay_Alex-01.png">
+    </div>
+</body>
+</html>

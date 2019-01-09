@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { 
+            padding-top:50px; 
+            background-image: url("AppandScreen_SISS_DemoDay-01.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top;
+        }
+        #button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+        }
+        #btnimgloaded {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btnimgloading {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btnimgstart {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        var x = null;
+        var y = null;
+        var z = null;
+        var socket = io();
+        $(function () {
+            x = document.getElementById("btnimgloading");
+            y = document.getElementById("btnimgloaded");
+            z = document.getElementById("btnimgstart");
+            show(x, false);
+            show(y, false);
+        });
+        function myFunction1() {
+            socket.emit('connectgame', true);
+            show(z, false);
+            show(x, true);
+            setTimeout(show, 3000, x, false);
+            setTimeout(show, 3000, y, true);
+            setTimeout(show, 3000, x, false);
+            setTimeout("direct()", 5000);
+        }
+        function show(btn, bool){
+            if (bool) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+        function direct() {
+            window.location.href = "/PhoneDecGamePlan";
+        }
+    </script>
+</head>
+<body>
+    <div id="button">
+        <img onclick="myFunction1()" id="btnimgstart" src="AppandScreen_SISS_DemoDay_Alex-01.png">
+        <img id="btnimgloading" src="AppandScreen_SISS_DemoDay_Alex-03.png">
+        <img id="btnimgloaded" src="AppandScreen_SISS_DemoDay_Alex-04.png">
+    </div>
+</body>
+</html>

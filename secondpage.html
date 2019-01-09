@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { 
+            padding-top:50px; 
+            background-image: url("AppandScreen_SISS_DemoDay_Alex-43.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        #button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            bottom: 10%;
+            width: 100%;
+        }
+        #btnimgloaded {
+            width: 10%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btnimgloading {
+            width: 10%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            var x = document.getElementById("btnimgloading");
+            var y = document.getElementById("btnimgloaded");
+            x.style.display = "none";
+            y.style.display = "none";
+            var socket = io();
+            socket.on('connectgame', function(msg){
+                show(x, true)
+                setTimeout(show, 3000, x, false);
+                setTimeout(show, 3000, y, true);
+                setTimeout("direct()", 5000);
+            });
+        });
+        function direct() {
+            window.location.href = "/DecideGamePlan";
+        }
+        function show(btn, bool){
+            if (bool) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <div id="button">
+        <img id="btnimgloading" src="Connectingbtn.png">
+        <img id="btnimgloaded" src="Connectedbtn.png">
+    </div>
+
+</body>
+</html>

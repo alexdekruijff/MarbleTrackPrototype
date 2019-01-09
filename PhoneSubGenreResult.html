@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        @font-face {
+            font-family: 'AvenirLTStd-Light'; /*a name to be used later*/
+            src: url('AvenirLTStd-Light.otf') format("opentype");
+        }   
+        body { 
+            padding-top:50px; 
+            background-color: #91D6F3;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top;
+        }
+        #button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            width: 100%;
+            top: 30%;
+        }
+        #chosen {
+            width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #notchosen {
+            width: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #icon {
+            top: 3%;
+            float: right;
+            width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btngenres {
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            width: 100%;
+            top: 43%;
+        }
+        #genrebtn {
+            padding: 150px 60px 150px;
+            margin: 20px;
+            border-radius: 50px;
+            background-color: #FFFFFF;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'AvenirLTStd-Light';
+            color: #0FA8DB;
+        }
+        #notchosen {
+            opacity: 0.3;
+        }
+        #chosenbtn {
+            background-color:  #F5B854;
+        }
+
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        var socket = io();
+        $(function () {
+            var x = document.getElementById("chosen");
+            x.style.display = "none";
+        });
+        function direct() {
+            window.location.href = "/LookScreen3";
+        }
+        function show(btn, bool){
+            if (bool) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+        function myFunction1() {
+            var x = document.getElementById("chosen");
+            var y = document.getElementById("notchosen");
+            show(x, true);
+            show(y, false);
+            socket.emit('subgenreresult', true);
+        }
+        function myFunction2() {
+            socket.emit('subgenreplay', true);
+            direct();
+        }
+    </script>
+</head>
+<img id="icon"  src="AppandScreen_SISS_DemoDay_Alex-45.png">
+<body>
+    <div id="button">
+        <img onclick="myFunction2()" id="chosen" src="AppandScreen_SISS_DemoDay_Alex-33.png">
+        <img id="notchosen" src="AppandScreen_SISS_DemoDay_Alex-33.png">
+    </div>
+    <div class="container" id="btngenres">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Horror
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn" >
+                        Comedy
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn" onclick="myFunction1()">
+                        Action
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Animation
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Crime
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Drama
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Romance 
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Science Fiction
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Adventure
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Mystery
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Arthouse
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Fantasy
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Thriller
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="genre">
+                    <div id="genrebtn">
+                        Documentary
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

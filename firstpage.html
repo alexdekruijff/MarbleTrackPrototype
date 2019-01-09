@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { padding-top:50px; }
+        #myDIV {
+            width: 100%;
+            padding: 50px 0;
+            text-align: center;
+            background-color: lightblue;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        var socket = io();
+        function myFunction1() {
+            socket.emit('connectgame', true);
+        }
+        function myFunction2() {
+            socket.emit('decide', true);
+        }
+        function myFunction3() {
+            socket.emit('genreplay', true);
+        }
+        function myFunction4() {
+            socket.emit('genreresult', true);
+        }
+        function myFunction5() {
+            socket.emit('subgenre', true);
+        }
+        function myFunction6() {
+            socket.emit('subgenreplay', true);
+        }
+        function myFunction7() {
+            socket.emit('subgenreresult', true);
+        }
+        function myFunction8() {
+            socket.emit('immersion', true);
+        }
+        function myFunction9() {
+            socket.emit('immersionplay', true);
+        }
+        function myFunction10() {
+            socket.emit('immersionresult', true);
+        }
+        function myFunction11() {
+            socket.emit('finalmovie', true);
+        }
+        function myFunction12() {
+            socket.emit('finalmovieplay', true);
+        }
+    </script>
+
+</head>
+<body>
+
+    <button onclick="myFunction1()">Knop1</button>
+    <button onclick="myFunction2()">Knop2</button>
+    <button onclick="myFunction3()">Knop3</button>
+    <button onclick="myFunction4()">Knop4</button>
+    <button onclick="myFunction5()">Knop5</button>
+    <button onclick="myFunction6()">Knop6</button>
+    <button onclick="myFunction7()">Knop7</button>
+    <button onclick="myFunction8()">Knop8</button>
+    <button onclick="myFunction9()">Knop9</button>
+    <button onclick="myFunction10()">Knop10</button>
+</body>
+</html>

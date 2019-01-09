@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { 
+            padding-top:50px; 
+            background-image: url("AppandScreen_SISS_DemoDay-34.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            var socket = io();
+            socket.on('immersionplay', function(msg){
+                direct();
+            });
+            socket.on('immersionresult', function(msg){
+                direct2();
+            });
+            socket.on('subgenre', function(msg){
+                direct3();
+            });
+        });
+        function direct() {
+            window.location.href = "/ImmersionPlay";
+        }
+        function direct2() {
+            window.location.href = "/ImmersionResult";
+        }
+        function direct3() {
+            window.location.href = "/SubGenre";
+        }
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

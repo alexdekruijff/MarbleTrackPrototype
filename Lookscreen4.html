@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Site</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <style>
+        body { 
+            padding-top:50px; 
+            background-image: url("AppandScreen_SISS_DemoDay-12.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: top;
+        }
+        #button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+        }
+        #btnimgstart {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btnimgstart1 {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #btnimgstart2 {
+            width: 30%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.4;
+        }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="jquery.min.js"></script>
+    <script>
+        var socket = io();
+        $(function () {
+            var x = document.getElementById("btnimgstart1");
+            var y = document.getElementById("btnimgstart2");
+            x.style.display = "none";
+            setTimeout(show, 4000, x, true);
+            setTimeout(show, 4000, y, false);
+        });
+        function myFunction1() {
+            //socket.emit('genreresult', true);
+            direct();
+        }
+        function myFunction2() {
+            socket.emit('immersion', true);
+            direct2();
+        }
+        function direct() {
+            window.location.href = "/PhoneCriticsResult";
+        }
+        function direct2() {
+            window.location.href = "/PhoneImmersionResult";
+        }
+        function show(btn, bool){
+            if (bool) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="button">
+        <img onclick="myFunction2()" id="btnimgstart" src="AppandScreen_SISS_DemoDay_Alex-32.png">
+        <img onclick="myFunction1()" id="btnimgstart1" src="AppandScreen_SISS_DemoDay_Alex-33.png">
+        <img id="btnimgstart2" src="AppandScreen_SISS_DemoDay_Alex-33.png">
+    </div>
+</body>
+</html>
